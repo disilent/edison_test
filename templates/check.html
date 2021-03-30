@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% set page_title = 'Испытай себя' %}
+
+{% block content %}
+<h1>Что же!</h1>
+<p>Ваше загаданное число: <h2 style="color: green">{{answer}}</h2></p>
+<p>Наши экстрасенсы предсказали следующие числа:</p>
+<table>
+    <tr>
+        <td><h4>Экстрасенс</h4></td>
+        {%- for i in range(numbers|count) %}
+        <td>
+            <h4>{{i + 1}}</h4>
+        </td>
+        {%- endfor %}
+    </tr>
+    <tr>
+        <td><h4>Число</h4></td>
+        {%- for number in numbers %}
+        <td>
+            <h3 style="color: {{"green" if answer == number else "red"}}">{{number}}</h3>
+        </td>
+        {%- endfor %}
+    </tr>
+    <tr>
+        <td><h4>Доверие</h4></td>
+        {%- for trust in trusts %}
+        <td>
+            <h3>{{trust}}</h3>
+        </td>
+        {%- endfor %}
+    </tr>
+<table>
+
+<a href="/ready"><button>Ещё раз!</button></a>
+
+{% endblock %}

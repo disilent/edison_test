@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% set page_title = 'Испытай себя' %}
+
+{% block content %}
+<h1>Итак!</h1>
+<p>Наши экстрасенсы увидели следующие загаданные числа:</p>
+<table>
+    <tr>
+        <td><h4>Экстрасенс</h4></td>
+        {%- for i in range(numbers|count) %}
+        <td>
+            <h4>{{i + 1}}</h4>
+        </td>
+        {%- endfor %}
+    </tr>
+    <tr>
+        <td><h4>Число</h4></td>
+        {%- for number in numbers %}
+        <td>
+            <h3>{{number}}</h3>
+        </td>
+        {%- endfor %}
+    </tr>
+    <tr>
+        <td><h4>Доверие</h4></td>
+        {%- for trust in trusts %}
+        <td>
+            <h3>{{trust}}</h3>
+        </td>
+        {%- endfor %}
+    </tr>
+<table>
+<form method="POST" action="/check">
+<p>Теперь введите загаданное число(от 10 до 99)&nbsp
+    <input type="number" size="2" name="answer" min="10" max="99" value="">
+</p>
+<button type="submit">Проверить</button>
+</form>
+
+{% endblock %}
