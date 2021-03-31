@@ -41,5 +41,12 @@ def check():
 
     return render_template('check.html', numbers=numbers, trusts=trusts, answer=answer)
 
+@app.route('/history')
+def history():
+    psychic = get_psychics()
+    history, answers = psychic.get_history()
+    count   = psychic.get_count()
+    return render_template('history.html', history=history, answers=answers, count=count)
+
 if __name__ == "__main__":
     app.run()

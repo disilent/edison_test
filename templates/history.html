@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% set page_title = 'Испытай себя' %}
+
+{% block content %}
+<h1>История</h1>
+<table>
+    {%- for i in range(count) %}
+    <tr>
+        <td>{{i + 1}}</td>
+        {%- for ist in history %}
+        <td>
+            {{ist[i]}}
+        </td>
+        {%- endfor %}
+    </tr>
+    {%- endfor %}
+    <tr>
+        <td>Ответы</td>
+        {%- for ans in answers %}
+        <td>
+            {{ans}}
+        </td>
+        {%- endfor %}
+    </tr>
+<table>
+
+<a href="/ready"><button>Eщё раз</button></a>
+{% endblock %}
